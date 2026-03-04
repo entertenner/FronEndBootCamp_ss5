@@ -4,8 +4,132 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>To Do List ของฉัน</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Prompt:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
+    <style>
+        h1 {
+            font-family: Prompt , sans-serif;
+            font-style: normal;
+            font-size: 60px;
+            font-weight: 600;
+            color: #003262;
+            text-align: center;
+            margin-bottom: 10px;
+        }
+        .inputlist{
+            text-align: center;
+            /*border-style: solid;*/
+            outline-style: solid;
+            outline-color: #003262;
+            outline-width: medium;
+            box-shadow: 0 4px 10px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+            border-radius: 15px;
+            margin-left: 200px;
+            margin-right: 200px;
+            padding-bottom: 20px;
+        }
+        #todo{
+            font-family: Prompt , sans-serif;
+            background-color: white;
+            border-style: outset;
+            border-radius: 7px;
+            padding-left: 15px;
+            padding-right: 15px;
+            padding-top: 10px;
+            padding-bottom: 10px;
+            border: 1;
+            border-color: cornflowerblue;
+            margin: 10px;
+        }
+        #Myul{
+            font-family: Prompt , sans-serif;
+            font-size: 25px;
+            color: black;
+            text-align: left;
+            margin-left: 80px;
+        }
+        #btnlist{
+            font-family: Prompt , sans-serif;
+            font-size: 15px;
+            color: white;
+            background-color:#003262;
+            border-radius: 7px;
+            padding-left: 15px;
+            padding-right: 15px;
+            padding-top: 10px;
+            padding-bottom: 10px;
+            cursor: pointer;
+        }
+        .close{
+            position: absolute;
+            right: 15cm;
+            padding: 12px 16px 12px 16px;
+            color: red;
+        }
+        .close:hover{
+            cursor: pointer;
+        }
+    </style>
 </head>
 <body>
-    
+    <h1>ToDoList ของฉัน</h1>
+    <div class="inputlist">
+        <input id="todo" type="text" name="List" placeholder="เพิ่มรายการที่ต้องทำ">
+        <button id="btnlist" onclick="showtodolist()">เพิ่มรายการ</button>
+
+        <ul id="Myul">
+            <li>ให้อาหารปลา</li>
+            <li>ซื้อวัตถุดิบทำอาหาร</li>
+            <li>อ่านหนังสือที่ชอบ</li>
+        </ul>
+    </div>
+
+    <script>
+        function showtodolist() {
+            /* สร้างลิสต์ */
+            let newli = document.createElement("li");
+            let inputvalue = document.getElementById("todo").value;
+            let t = document.createTextNode(inputvalue);
+            newli.appendChild(t);
+            document.getElementById("Myul").appendChild(newli);
+            document.getElementById('todo').value = "" ; /*clerช่อง input*/
+
+             /* สร้างปุ่มลบ */
+            let span = document.createElement("span");
+            let span_txt = document.createTextNode("Delete");
+            span.className = "close";
+            span.appendChild(span_txt);
+            newli.appendChild(span);
+
+            let del_li = document.getElementsByClassName("close");
+            for (let i = 0; i < del_li.length; i++) {
+                    del_li.onclick = function(){
+                    let div = this.parentElement;
+                    div.style.display = "none";
+                }
+            }
+        }
+
+        /* สร้างปุ่มลบรายการ */
+        let Nodelist = document.getElementsByTagName("li");
+        for (let i = 0; i < Nodelist.length; i++) {
+                let span = document.createElement("span");
+                let span_txt = document.createTextNode("Delete");
+                span.className = "close";
+                span.appendChild(span_txt);
+                Nodelist.appendChild(span);
+            }
+        
+        /* คำสั่งลบรายการ */
+        let del_li = document.getElementsByClassName("close");
+        for (let i = 0; i < del_li.length; i++) {
+            del_li.onclick = function(){
+                let div = this.parentElement;
+                div.style.display = "none";
+            }
+        }  
+    </script>
+
 </body>
 </html>
