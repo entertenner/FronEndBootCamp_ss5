@@ -104,7 +104,7 @@
 
             let del_li = document.getElementsByClassName("close");
             for (let i = 0; i < del_li.length; i++) {
-                    del_li.onclick = function(){
+                    del_li[i].onclick = function(){
                     let div = this.parentElement;
                     div.style.display = "none";
                 }
@@ -118,13 +118,13 @@
                 let span_txt = document.createTextNode("Delete");
                 span.className = "close";
                 span.appendChild(span_txt);
-                Nodelist.appendChild(span);
+                Nodelist[i].appendChild(span);
             }
         
         /* คำสั่งลบรายการ */
         let del_li = document.getElementsByClassName("close");
         for (let i = 0; i < del_li.length; i++) {
-                del_li.onclick = function(){
+                del_li[i].onclick = function(){
                 let div = this.parentElement;
                 div.style.display = "none";
                 }
